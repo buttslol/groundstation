@@ -1,6 +1,12 @@
 groundstation_dev() {
+    requires "python_installed"
     requires "libgit2_dev"
     requires "pip_packages_installed"
+    process
+}
+
+python_installed() {
+    install_package python -a python2.7
     process
 }
 
