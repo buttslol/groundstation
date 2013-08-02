@@ -13,6 +13,8 @@ proto: groundstation/proto/gizmo_pb2.py \
 
 PROTOC_OPTS = --python_out=./
 
+NODE = $(shell which node >/dev/null && echo "airship_test")
+
 groundstation/%_pb2.py: groundstation/%.proto
 	protoc ${PROTOC_OPTS} $^
 
@@ -25,4 +27,4 @@ groundstation_test:
 airship_test:
 	cd airship; ../node_modules/mocha/bin/mocha
 
-test: groundstation_test airship_test
+test: groundstation_test ${NODE}
